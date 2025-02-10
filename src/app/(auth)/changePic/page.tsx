@@ -1,7 +1,6 @@
 "use client";
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { styled } from "@mui/material/styles";
 import { useAppDispatch, useAppSelector } from "@/hooks/store.hooks";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
@@ -10,9 +9,9 @@ import { useRouter } from "next/navigation";
 import { getData } from "@/store/slices/user.slice";
 import Loading from "@/components/Loading/Loading";
 export default function Page() {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const router = useRouter();
-  const user = useAppSelector((store)=>store.userReducer.user)
+  const user = useAppSelector((store) => store.userReducer.user);
   const [image, setImage] = useState<string>("user.png");
   const token = useAppSelector((store) => store.userReducer.token);
   const postFileRef = useRef<HTMLInputElement>(null);
@@ -21,7 +20,7 @@ export default function Page() {
     toastId = toast.loading("Uploading...");
     //* lkn hna zy el crud lazm a3ml files?.[0] 34an ygeb awl file we lazm ykon fe file asln
     const file = postFileRef.current?.files?.[0];
-    
+
     const postDate = new FormData();
     if (file) {
       postDate.append("photo", file);
@@ -36,51 +35,44 @@ export default function Page() {
     };
 
     try {
-      let { data } = await axios.request(options);
+      const { data } = await axios.request(options);
       if (data.message === "success") {
         toast.success("Changed Successfully");
-        router.push("/profile")
+        router.push("/profile");
+      } else {
+        toast.error("Failed to Change");
       }
-    } catch (error) {
-      toast.error("Failed to Change");
     } finally {
       toast.dismiss(toastId);
     }
   }
-  const VisuallyHiddenInput = styled("input")({
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(50%)",
-    height: 1,
-    overflow: "hidden",
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    whiteSpace: "nowrap",
-    width: 1,
-  });
-    useEffect(()=>{
-      if(token==null){
-        router.push("/login")
-      }else{
-          dispatch(getData())
-          setImage(`${user?.photo}`)
-      }
-    },[])
+  useEffect(() => {
+    if (token == null) {
+      router.push("/login");
+    } else {
+      dispatch(getData());
+      setImage(`${user?.photo}`);
+    }
+  }, []);
   return (
     <>
       <Box width="40%" sx={{ mx: "auto", mt: 5 }}>
-        {user?<img
-          src={user.photo}
-          className="mx-auto w-56 h-56 rounded-full object-cover"
-          alt=""
-        />:<Loading/>}
+        {user ? (
+          <img
+            src={user.photo}
+            className="mx-auto w-56 h-56 rounded-full object-cover"
+            alt=""
+          />
+        ) : (
+          <Loading />
+        )}
 
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             mt: 2,
-            flexDirection:"column",
+            flexDirection: "column",
             gap: 2,
           }}
         >
@@ -113,11 +105,16 @@ export default function Page() {
                   SVG, PNG, JPG or GIF (MAX. 800x400px)
                 </p>
               </div>
-              <input id="dropzone-file" type="file" className="hidden"  onChange={(e) => {
-              const file = e.target.files?.[0];
-              setImage(file ? URL.createObjectURL(file) : `${user?.photo}`);
-            }}
-            ref={postFileRef}/>
+              <input
+                id="dropzone-file"
+                type="file"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  setImage(file ? URL.createObjectURL(file) : `${user?.photo}`);
+                }}
+                ref={postFileRef}
+              />
             </label>
           </div>
 

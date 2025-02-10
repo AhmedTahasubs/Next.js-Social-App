@@ -79,21 +79,21 @@ const PostSlice= createSlice({
         builder.addCase(getPosts.fulfilled, (state, action) => {
             state.posts=action.payload
         })
-        builder.addCase(getPosts.rejected, (state, action) => {
+        builder.addCase(getPosts.rejected, () => {
         })
         builder.addCase(getUserPosts.fulfilled, (state, action) => {
             state.posts=action.payload
         })
-        builder.addCase(getUserPosts.rejected, (state, action) => {
+        builder.addCase(getUserPosts.rejected, () => {
         })
         builder.addCase(getPostDetails.fulfilled, (state, action) => {
             state.postDetails=action.payload
         })
-        builder.addCase(getPostDetails.rejected, (state, action) => {
+        builder.addCase(getPostDetails.rejected, () => {
         })
-        builder.addCase(deletePost.fulfilled, (state, action) => {
+        builder.addCase(deletePost.fulfilled, () => {
         })
-        builder.addCase(deletePost.rejected, (state, action) => {
+        builder.addCase(deletePost.rejected, () => {
         })
     }
 })

@@ -4,7 +4,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { styled } from "@mui/material/styles";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useAppSelector } from "@/hooks/store.hooks";
-import React, { useRef, useState } from "react";
+import React, { useRef} from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 export default function PostForm() {
@@ -32,12 +32,13 @@ export default function PostForm() {
       data: postDate,
     };
     try {
-      let { data } = await axios.request(options);
+      const { data } = await axios.request(options);
       if (data.message === "success") {
         toast.success("Posted Successfully");
       }
-    } catch (error) {
-      toast.error("Failed to post");
+      else{
+        toast.error("Failed to post");
+      }
     } finally {
       toast.dismiss(toastId);
       window.location.reload();

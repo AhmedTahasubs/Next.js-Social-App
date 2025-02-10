@@ -19,7 +19,7 @@ export default function page() {
               router.push("/")
             }, 1000);
           }
-        }).catch((error)=>{})
+        })
       },
         });
 

@@ -35,7 +35,7 @@ export const addComment = createAsyncThunk("addComment",async ({post,content}:{p
                 location.reload()
             }, 300);
         }
-    } catch (error) {
+    } catch (xError) {
         toast.error("Failed to add comment")
     }
     finally{
@@ -77,9 +77,9 @@ const PostSlice= createSlice({
     initialState,
     reducers:{},
     extraReducers: (builder) => {
-        builder.addCase(deleteComment.fulfilled,(state,action)=>{
+        builder.addCase(deleteComment.fulfilled,()=>{
         })
-        builder.addCase(deleteComment.rejected,(state,action)=>{
+        builder.addCase(deleteComment.rejected,()=>{
             
         })
     }

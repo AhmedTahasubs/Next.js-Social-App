@@ -1,6 +1,6 @@
 "use client";
 import { useAppDispatch } from "@/hooks/store.hooks";
-import { login, signUp } from "@/store/slices/user.slice";
+import { signUp } from "@/store/slices/user.slice";
 import { Box, Button, Container, Paper, TextField } from "@mui/material";
 import * as yup from "yup";
 import { useFormik } from "formik";

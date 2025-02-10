@@ -3,13 +3,13 @@ import Loading from '@/components/Loading/Loading';
 import PostCard from '@/components/PostCard/PostCard';
 import PostForm from '@/components/PostForm/PostForm';
 import { useAppDispatch, useAppSelector } from '@/hooks/store.hooks';
-import { getPosts, getUserPosts } from '@/store/slices/posts.slice';
+import { getUserPosts } from '@/store/slices/posts.slice';
 import Grid from '@mui/material/Grid2';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { jwtDecode, JwtPayload } from "jwt-decode";
 import { getData } from '@/store/slices/user.slice';
-import { Box, Container, Paper } from '@mui/material';
+import { Box, Container} from '@mui/material';
 import ProfileCard from '@/components/ProfileCard/ProfileCard';
 export default function Profile() {
   const router = useRouter()

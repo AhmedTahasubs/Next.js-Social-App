@@ -42,7 +42,6 @@ export default function PostCard({
   let toastId: string;
   const [comment, setComment] = React.useState("");
   const inputRef = React.useRef<HTMLInputElement>(null);
-  const content = inputRef.current?.value || "";
   const dispatch = useAppDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -76,13 +75,14 @@ export default function PostCard({
         data: newPostDate,
       };
       try {
-        let { data } = await axios.request(options);
+        const { data } = await axios.request(options);
         if (data.message === "success") {
           toast.success("Edited Successfully");
         }
-      } catch (error) {
-        toast.error("Failed to Edit");
-      } finally {
+        else{
+          toast.error("Failed to Edit");
+        }
+      }finally {
         toast.dismiss(toastId);
         window.location.reload();
       }

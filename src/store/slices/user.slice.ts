@@ -76,26 +76,26 @@ const userSlice = createSlice({
             state.token = action.payload.token
             localStorage.setItem("token",action.payload.token)
         })
-        builder.addCase(login.rejected,(state,action)=>{
+        builder.addCase(login.rejected,()=>{
             toast.dismiss(toastId)
             toast.error("Incorrect email or password")
             
         })
-        builder.addCase(signUp.fulfilled,(state,action)=>{
+        builder.addCase(signUp.fulfilled,()=>{
             toast.dismiss(toastId)
             toast.success("Account created successfully")
             
         })
-        builder.addCase(signUp.rejected,(state,action)=>{
+        builder.addCase(signUp.rejected,()=>{
             toast.dismiss(toastId)
             toast.error("User Already Exists")
             
         })
-        builder.addCase(changePass.fulfilled,(state,action)=>{
+        builder.addCase(changePass.fulfilled,()=>{
             toast.dismiss(toastId)
             toast.success("Password changed successfully")
         })
-        builder.addCase(changePass.rejected,(state,action)=>{
+        builder.addCase(changePass.rejected,()=>{
             toast.dismiss(toastId)
             toast.error("Invalid Entries")
             
@@ -103,7 +103,7 @@ const userSlice = createSlice({
         builder.addCase(getData.fulfilled,(state,action)=>{
             state.user=action.payload.user            
         })
-        builder.addCase(getData.rejected,(state,action)=>{
+        builder.addCase(getData.rejected,()=>{
             
         })
     }
