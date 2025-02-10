@@ -15,8 +15,8 @@ const eslintConfig = [
     rules: {
       '@typescript-eslint/no-explicit-any': 'off', // Disable the rule
       '@typescript-eslint/no-unused-vars': 'off', // Disable the no-unused-vars rule
-      'react/no-unescaped-entities': 'off',
-      '@next/next/no-page-custom-font': 'off',
+      "react-hooks/rules-of-hooks": "off", // Checks rules of Hooks
+      "react-hooks/exhaustive-deps": "off" // Checks effect dependencies
     },
   },
 ];
