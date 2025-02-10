@@ -1,10 +1,11 @@
+"use client"
 import { userType } from "@/types/user.types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import toast from 'react-hot-toast';
 let toastId:string;
 const initialState:userType = {
-    token: window.localStorage.getItem("token"),
+    token:window.localStorage.getItem("token"),      
     user: null,
 }
 //* ht3aml m3 api lazm a3ml el createAsyncThunk we 34an el login hy8yr fe state fe ely hy8yro hwa el reducers aw
