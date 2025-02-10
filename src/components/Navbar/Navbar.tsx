@@ -75,7 +75,7 @@ export default function Navbar() {
       </MenuItem>
       <MenuItem
         onClick={() => {
-          localStorage.removeItem("token");
+          window.localStorage.removeItem("token");
           handleMenuClose();
 
           window.location.reload();

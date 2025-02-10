@@ -26,7 +26,7 @@ export default function page() {
           if (res.payload.message === "success") {
             setTimeout(() => {
               window.location.reload();
-              localStorage.removeItem("token");
+              window.localStorage.removeItem("token");
               router.push("/login");
             }, 1000);
           }

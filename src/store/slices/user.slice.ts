@@ -4,7 +4,7 @@ import axios from "axios";
 import toast from 'react-hot-toast';
 let toastId:string;
 const initialState:userType = {
-    token: localStorage.getItem("token"),
+    token: window.localStorage.getItem("token"),
     user: null,
 }
 //* ht3aml m3 api lazm a3ml el createAsyncThunk we 34an el login hy8yr fe state fe ely hy8yro hwa el reducers aw
@@ -74,7 +74,7 @@ const userSlice = createSlice({
             toast.dismiss(toastId)
             toast.success("Welcome back")
             state.token = action.payload.token
-            localStorage.setItem("token",action.payload.token)
+            window.localStorage.setItem("token",action.payload.token)
         })
         builder.addCase(login.rejected,()=>{
             toast.dismiss(toastId)

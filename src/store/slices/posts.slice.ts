@@ -19,7 +19,7 @@ export const getPosts = createAsyncThunk("posts/getPosts",async (_,{getState})=>
         method: 'GET',
         headers:{
             //! tany tre2a
-            token: localStorage.getItem("token")
+            token: window.localStorage.getItem("token")
         }
     }
     const {data } = await axios.request(options)
@@ -46,7 +46,7 @@ export const getPostDetails = createAsyncThunk("posts/getPostDetails",async (id:
         method: 'GET',
         headers:{
             //! tany tre2a
-            token: localStorage.getItem("token")
+            token: window.localStorage.getItem("token")
         }
     }
     const {data } = await axios.request(options)
@@ -59,7 +59,7 @@ export const deletePost = createAsyncThunk("posts/deletePost",async (id:string)=
         method: 'DELETE',
         headers:{
             //! tany tre2a
-            token: localStorage.getItem("token")
+            token: window.localStorage.getItem("token")
         }
     }
     const {data } = await axios.request(options)

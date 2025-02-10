@@ -238,7 +238,7 @@ export default function PostCard({
           <Link
             href={`/post/${postInfo._id}`}
             onClick={() => {
-              if (localStorage.getItem("token") == null) {
+              if (window.localStorage.getItem("token") == null) {
                 window.location.reload();
               }
             }}
