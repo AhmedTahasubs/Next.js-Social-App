@@ -229,7 +229,7 @@ export default function PostCard({
         {postInfo.comments.length > 0 && !showAllComments && (
           <CommentCard commentInfo={postInfo.comments[0]} />
         )}
-        {postInfo.comments.length > 1 &&
+        {postInfo.comments.length >= 1 &&
           showAllComments &&
           postInfo.comments.map((comment) => (
             <CommentCard key={comment._id} commentInfo={comment} />
